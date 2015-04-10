@@ -137,7 +137,7 @@ include '../../menus/menu.php';
                                                             <div class="controls">
                                                                 <textarea name="notas_cli" id="notas_cli" rows="3" class="span4"></textarea>
                                                             </div>
-                                                    </div>
+                                                    </div>                                                    
                                                 </div>
 
                                                 <div class="span6">
@@ -177,6 +177,18 @@ include '../../menus/menu.php';
                                                                 <option value="N" selected>Persona Natural</option>
                                                                 <option value="J">Persona Jurídica</option>
                                                             </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                        <label class="control-label" for="sector">Sectores </label>
+                                                        <div class="controls">
+                                                             <select name="sector" id="sector" class="span4"></select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                        <label class="control-label" for="ruta">Rutas </label>
+                                                        <div class="controls">
+                                                             <select name="ruta" id="ruta" class="span4"></select>
                                                         </div>
                                                     </div>
                                                   </div>

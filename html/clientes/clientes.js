@@ -119,7 +119,7 @@ function guardar_cliente() {
                                             type: "POST",
                                             url: "guardar_clientes.php",
                                             data: "tipo_docu=" + $("#tipo_docu").val() + "&ruc_ci=" + $("#ruc_ci").val() +
-                                            "&nombres_cli=" + $("#nombres_cli").val() + "&tipo_cli=" + $("#tipo_cli").val() + "&direccion_cli=" + $("#direccion_cli").val() + "&nro_telefono=" + $("#nro_telefono").val() + "&nro_celular=" + $("#nro_celular").val() + "&pais_cli=" + $("#pais_cli").val() + "&ciudad_cli=" + $("#ciudad_cli").val() + "&email=" + $("#email").val() + "&cupo_credito=" + $("#cupo_credito").val() + "&notas_cli=" + $("#notas_cli").val()+ "&id_plan_cuentas=" + $("#id_plan_cuentas").val(),
+                                            "&nombres_cli=" + $("#nombres_cli").val() + "&tipo_cli=" + $("#tipo_cli").val() + "&direccion_cli=" + $("#direccion_cli").val() + "&nro_telefono=" + $("#nro_telefono").val() + "&nro_celular=" + $("#nro_celular").val() + "&pais_cli=" + $("#pais_cli").val() + "&ciudad_cli=" + $("#ciudad_cli").val() + "&email=" + $("#email").val() + "&cupo_credito=" + $("#cupo_credito").val() + "&notas_cli=" + $("#notas_cli").val()+ "&id_plan_cuentas=" + $("#id_plan_cuentas").val()+ "&id_ruta="+$("#ruta").val(),
                                             success: function(data) {
                                                 var val = data;
                                                 if (val == 1) {
@@ -187,7 +187,7 @@ function modificar_cliente() {
                                                 type: "POST",
                                                 url: "modificar_clientes.php",
                                                 data: "tipo_docu=" + $("#tipo_docu").val() + "&ruc_ci=" + $("#ruc_ci").val() + "&id_cliente=" + $("#id_cliente").val() +
-                                                "&nombres_cli=" + $("#nombres_cli").val() + "&tipo_cli=" + $("#tipo_cli").val() + "&direccion_cli=" + $("#direccion_cli").val() + "&nro_telefono=" + $("#nro_telefono").val() + "&nro_celular=" + $("#nro_celular").val() + "&pais_cli=" + $("#pais_cli").val() + "&ciudad_cli=" + $("#ciudad_cli").val() + "&email=" + $("#email").val() + "&cupo_credito=" + $("#cupo_credito").val() + "&notas_cli=" + $("#notas_cli").val(),
+                                                "&nombres_cli=" + $("#nombres_cli").val() + "&tipo_cli=" + $("#tipo_cli").val() + "&direccion_cli=" + $("#direccion_cli").val() + "&nro_telefono=" + $("#nro_telefono").val() + "&nro_celular=" + $("#nro_celular").val() + "&pais_cli=" + $("#pais_cli").val() + "&ciudad_cli=" + $("#ciudad_cli").val() + "&email=" + $("#email").val() + "&cupo_credito=" + $("#cupo_credito").val() + "&notas_cli=" + $("#notas_cli").val()+ "&id_ruta="+$("#ruta").val(),
                                                 success: function(data) {
                                                     var val = data;
                                                     if (val == 1) {
@@ -328,6 +328,14 @@ function inicio() {
     
     $("#cupo_credito").on("keypress",punto);
     
+    //$("#sector").load("carga_sectores.php");
+    $("#sector").load("carga_sectores.php",function(e){        
+        $("#ruta").load("carga_rutas.php?id="+$(this).val());
+    });
+    $("#sector").change(function (){
+        $("#ruta").load("carga_rutas.php?id="+$(this).val());
+    })
+
     $("#tipo_docu").change(function() {
         if ($("#tipo_docu").val() === "Cedula") {
             $("#ruc_ci").val("");
@@ -551,9 +559,9 @@ function inicio() {
     jQuery("#list").jqGrid({
         url: 'datos_clientes.php',
         datatype: 'xml',
-        colNames: ['Codigo', 'Tipo Documento', 'Identificacion', 'Nombres', 'Tipo Cliente', 'Fijo', 'Movil', 'Pais', 'Ciudad', 'Direccion', 'Correo', 'Credito', 'Nota'],
+        colNames: ['Codigo', 'Tipo Documento', 'Identificacion', 'Nombres', 'Tipo Cliente', 'Fijo', 'Movil', 'Pais', 'Ciudad', 'Direccion', 'Correo', 'Credito', 'Nota','id_cliente_ruta','id_sector','id_ruta'],
         colModel: [
-            {name: 'id_cliente', index: 'id_cliente', editable: true, align: 'center', width: '120', search: false, frozen: true, editoptions: {readonly: 'readonly'}, formoptions: {elmprefix: ""}},
+            {name: 'id_cliente', index: 'clientes.id_cliente', editable: true, align: 'center', width: '120', search: false, frozen: true, editoptions: {readonly: 'readonly'}, formoptions: {elmprefix: ""}},
             {name: 'tipo_docu', index: 'tipo_docu', editable: true, align: 'center', width: '120', search: false, frozen: true, formoptions: {elmsuffix: " (*)"}, editrules: {required: true}},
             {name: 'ruc_ci', index: 'ruc_ci', editable: true, align: 'center', width: '120', search: true, frozen: true, formoptions: {elmsuffix: " (*)"}, editrules: {required: true}},
             {name: 'nombres_cli', index: 'nombres_cli', editable: true, align: 'center', width: '120', search: true, frozen: true, editoptions: {readonly: 'readonly'}, formoptions: {elmprefix: ""}},
@@ -565,24 +573,33 @@ function inicio() {
             {name: 'direccion_cli', index: 'direccion_cli', editable: true, align: 'center', width: '120', search: false, frozen: true, editoptions: {readonly: 'readonly'}, formoptions: {elmprefix: ""}},
             {name: 'email', index: 'email', editable: true, align: 'center', width: '120', search: false, frozen: true, editoptions: {readonly: 'readonly'}, formoptions: {elmprefix: ""}},
             {name: 'cupo_credito', index: 'cupo_credito', editable: true, align: 'center', width: '120', search: false, frozen: true, editoptions: {readonly: 'readonly'}, formoptions: {elmprefix: ""}},
-            {name: 'notas_cli', index: 'notas_cli', editable: true, align: 'center', width: '120', search: false, frozen: true, editoptions: {readonly: 'readonly'}, formoptions: {elmprefix: ""}}
+            {name: 'notas_cli', index: 'notas_cli', editable: true, align: 'center', width: '120', search: false, frozen: true, editoptions: {readonly: 'readonly'}, formoptions: {elmprefix: ""}},
+            {name: 'id_cliente_ruta', index: 'id_cliente_ruta', editable: true, align: 'center', width: '120', search: false, frozen: true, editoptions: {readonly: 'readonly'}, formoptions: {elmprefix: ""},hidden:true,},
+            {name: 'id_sector', index: 'id_sector', editable: true, align: 'center', width: '120', search: false, frozen: true, editoptions: {readonly: 'readonly'}, formoptions: {elmprefix: ""},hidden:true,},
+            {name: 'id_ruta', index: 'id_ruta', editable: true, align: 'center', width: '120', search: false, frozen: true, editoptions: {readonly: 'readonly'}, formoptions: {elmprefix: ""},hidden:true,},
         ],
         rowNum: 10,
         width: 830,
         height: 200,
         rowList: [10, 20, 30],
         pager: jQuery('#pager'),
-        sortname: 'id_cliente',
+        sortname: 'clientes.id_cliente',
         shrinkToFit: false,
         sortorder: 'asc',
         caption: 'Lista de Clientes',        
         viewrecords: true,
-        ondblClickRow: function(){
-         var id = jQuery("#list").jqGrid('getGridParam', 'selrow');
-         jQuery('#list').jqGrid('restoreRow', id);   
-         jQuery("#list").jqGrid('GridToForm', id, "#clientes_form");
-         $("#btnGuardar").attr("disabled", true);
-         $("#clientes").dialog("close");    
+        ondblClickRow: function(row,selrow){
+            var id = jQuery("#list").jqGrid('getGridParam', 'selrow');
+            jQuery('#list').jqGrid('restoreRow', id);   
+            jQuery("#list").jqGrid('GridToForm', id, "#clientes_form");         
+            var ret = jQuery("#list").jqGrid('getRowData', id);        
+            
+            $("#sector").val(ret.id_sector);
+            $("#ruta").load("carga_rutas.php?id="+ret.id_sector);
+
+            $("#btnGuardar").attr("disabled", true);
+            //console.log(ret.id_sector)
+            $("#clientes").dialog("close");    
         }
     }).jqGrid('navGrid', '#pager',
             {

@@ -43,6 +43,8 @@ function menu_1() {
                     <li><a href="../clientes" target="_blank">Clientes</a></li>
                     
                     <li><a href="../productos" target="_blank">Productos</a></li>
+                    <li><a href="../sectores" target="_blank">Sectores</a></li>
+                    <li><a href="../rutas" target="_blank">Rutas</a></li>
                     
                 </ul>
             </li>
