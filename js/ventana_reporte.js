@@ -101,6 +101,16 @@ function inicio(){
     $("#diario_caja").on("click",diario_caja);
     $("#ordenes_produccion_fechas").on("click",ordenes_produccion_fechas);
     $("#total_director").on("click",total_director);
+
+    
+    $("#cliente_ruta").on("click",cliente_ruta);
+    $("#cliente_sector").on("click",cliente_sector);    
+    $("#cliente_mas_compra").on("click",cliente_mas_compra);
+    $("#cliente_mas_compra_sector").on("click",cliente_mas_compra_sector);
+    $("#cliente_mas_compra_ruta").on("click",cliente_mas_compra_ruta);
+    $("#producto_sector").on("click",producto_sector);
+    $("#producto_ruta").on("click",producto_ruta);
+    
     
 }
 function Defecto(e){
@@ -129,8 +139,12 @@ function ventana_mar_cat(e){
     modal.open({
         content: "<input type='radio' name='group1' id='excel' value='Reporte en Excel' > <label for='excel'>Reporte en Excel</label> <br><input type='radio' name='group1' id='pdf' value='Reporte Pdf' checked> <label for='pdf'>Reporte Pdf</label> <br><label>Categorías</label><select id='sel_categoria' style='width:150px;float:right'></select><br><label>Marcas</label><select id='sel_marcas' style='width:150px;float:right'></select><br><a 'id='generar' style='cursor:pointer;font-size:12px;margin-left:40px' class='generarReporte_mar_cat' onclick='return fn_reporte_mar_cat(event)' href='#'>Generar Reporte</a>"
     });
-    $("#sel_marcas").load("../procesos/marcas_combos.php");   
-    $("#sel_categoria").load("../procesos/categorias_combos.php"); 
+    $("#sel_marcas").load("../html/productos/marcas_combos.php",function(){
+        $("#sel_marcas").append("<option value=''>Todas</option>");
+    });   
+    $("#sel_categoria").load("../html/productos/categorias_combos.php",function(){
+        $("#sel_categoria").append("<option value=''>Todas</option>");
+    }); 
     $('.generarReporte_mar_cat').button();	
     e.preventDefault();  
 }
@@ -1581,4 +1595,257 @@ function total_director(e){
 function fn_total_director(e){
     window.open('../../reportes/reporte_director.php?id='+$("#idDir").val()+"&inicio="+$("#inicio").val()+"&fin="+$("#fin").val(), '_blank');      
        
+}
+
+////rutas sectores///cliente_ruta
+function cliente_ruta(e){    
+    modal.open({
+        content: "<input type='radio' name='group1' id='pdf' value='Reporte Pdf' checked> <label for='pdf'>Reporte Pdf</label> <br><label>Rutas</label><select id='sel_rutas' style='width:150px;float:right'></select><br><a 'id='generar' style='cursor:pointer;font-size:12px;margin-left:40px' class='generarReporte_clientes_rutas' onclick='return fn_cliente_ruta(event)' href='#'>Generar Reporte</a>"
+    });
+    $("#sel_rutas").load("../../procesos/rutas_combos.php",function(){
+        $("#sel_rutas").append("<option value=''>Todas</option>");
+    });       
+    $('.generarReporte_clientes_rutas').button();  
+    e.preventDefault();  
+}
+
+function fn_cliente_ruta(e){    
+    window.open('../../reportes/clientes_rutas.php?id='+$("#sel_rutas").val()+'&val='+$("#sel_rutas option:selected").text(),'_blank');         
+    modal.close();  
+}
+function cliente_sector(e){    
+    modal.open({
+        content: "<input type='radio' name='group1' id='pdf' value='Reporte Pdf' checked> <label for='pdf'>Reporte Pdf</label> <br><label>Sector</label><select id='sel_sector' style='width:150px;float:right'></select><br><a 'id='generar' style='cursor:pointer;font-size:12px;margin-left:40px' class='generarReporte_clientes_sector' onclick='return fn_cliente_sector(event)' href='#'>Generar Reporte</a>"
+    });
+    $("#sel_sector").load("../../procesos/sector_combos.php",function(){
+        $("#sel_sector").append("<option value=''>Todas</option>");
+    });       
+    $('.generarReporte_clientes_sector').button();  
+    e.preventDefault();  
+}
+
+function fn_cliente_sector(e){    
+    window.open('../../reportes/clientes_sector.php?id='+$("#sel_sector").val()+'&val='+$("#sel_sector option:selected").text(),'_blank');         
+    modal.close();  
+}
+
+/////---////
+function cliente_mas_compra(e){    
+    modal.open({        
+        content: "<label style='padding:6px;'>Fecha Inicio</label> <input type='text' id='inicio' style='padding:2px;'><br><label style='padding:6px;'>Fecha Fin</label> <input type='text' id='fin' style='float: right;padding:2px;'><br><input type='radio' name='group1' id='pdf' value='Reporte Pdf' checked> <label for='pdf'>Reporte Pdf</label> <br><a 'id='generar' style='cursor:pointer;font-size:12px;margin-left:40px' class='generarReporte_clientes_sector' onclick='return fn_cliente_mas_compra(event)' href='#'>Generar Reporte</a>"
+    });
+    
+    $( "#inicio" ).datepicker({     
+        changeMonth: true,
+        dateFormat: 'yy-mm-dd',
+        changeYear: true,   
+        showButtonPanel: true,
+        showOtherMonths: true,
+        selectOtherMonths: true,   
+        numberOfMonths: 2,
+        onClose: function( selectedDate ) {
+            $( "#fin" ).datepicker( "option", "minDate", selectedDate );
+        }
+    });
+    $( "#fin" ).datepicker({    
+        changeMonth: true,
+        dateFormat: 'yy-mm-dd',
+        changeYear: true,   
+        showButtonPanel: true,
+        showOtherMonths: true,
+        selectOtherMonths: true,   
+        numberOfMonths: 2,
+        onClose: function( selectedDate ) {
+            $( "#inicio" ).datepicker( "option", "maxDate", selectedDate );
+        }
+    });
+
+    $('.generarReporte_clientes_sector').button();  
+    e.preventDefault();  
+}
+
+function fn_cliente_mas_compra(e){    
+    window.open('../../reportes/cliente_mas_compra.php?inicio='+$("#inicio").val()+'&fin='+$("#fin").val(),'_blank'); 
+    modal.close();  
+}
+/////////////////////
+function cliente_mas_compra_sector(e){    
+    modal.open({        
+        content: "<label>Sector</label><select id='sel_sector' style='width:150px;float:right'></select><br><label style='padding:6px;'>Fecha Inicio</label> <input type='text' id='inicio' style='padding:2px;'><br><label style='padding:6px;'>Fecha Fin</label> <input type='text' id='fin' style='float: right;padding:2px;'><br><input type='radio' name='group1' id='pdf' value='Reporte Pdf' checked> <label for='pdf'>Reporte Pdf</label> <br><a 'id='generar' style='cursor:pointer;font-size:12px;margin-left:40px' class='generarReporte_clientes_sector' onclick='return fn_cliente_mas_compra_sector(event)' href='#'>Generar Reporte</a>"
+    });    
+    $("#sel_sector").load("../../procesos/sector_combos.php",function(){
+        $("#sel_sector").append("<option value=''>Todas</option>");
+    });   
+    $( "#inicio" ).datepicker({     
+        changeMonth: true,
+        dateFormat: 'yy-mm-dd',
+        changeYear: true,   
+        showButtonPanel: true,
+        showOtherMonths: true,
+        selectOtherMonths: true,   
+        numberOfMonths: 2,
+        onClose: function( selectedDate ) {
+            $( "#fin" ).datepicker( "option", "minDate", selectedDate );
+        }
+    });
+    $( "#fin" ).datepicker({    
+        changeMonth: true,
+        dateFormat: 'yy-mm-dd',
+        changeYear: true,   
+        showButtonPanel: true,
+        showOtherMonths: true,
+        selectOtherMonths: true,   
+        numberOfMonths: 2,
+        onClose: function( selectedDate ) {
+            $( "#inicio" ).datepicker( "option", "maxDate", selectedDate );
+        }
+    });
+
+    $('.generarReporte_clientes_sector').button();  
+    e.preventDefault();  
+}
+
+function fn_cliente_mas_compra_sector(e){    
+    if($("#inicio").val() == '' || $("#fin").val() == ''){
+        alert("Indique un rango de fechas")
+    }else{
+        window.open('../../reportes/cliente_mas_compra_sector.php?inicio='+$("#inicio").val()+'&fin='+$("#fin").val()+'&id='+$("#sel_sector").val()+'&val='+$("#sel_sector option:selected").text(),'_blank'); 
+        modal.close();  
+    }
+}
+/////////////------------////cliente_mas_compra_ruta
+function cliente_mas_compra_ruta(e){    
+    modal.open({        
+        content: "<label>Ruta</label><select id='sel_rutas' style='width:150px;float:right'></select><br><label style='padding:6px;'>Fecha Inicio</label> <input type='text' id='inicio' style='padding:2px;'><br><label style='padding:6px;'>Fecha Fin</label> <input type='text' id='fin' style='float: right;padding:2px;'><br><input type='radio' name='group1' id='pdf' value='Reporte Pdf' checked> <label for='pdf'>Reporte Pdf</label> <br><a 'id='generar' style='cursor:pointer;font-size:12px;margin-left:40px' class='generarReporte_clientes_rutas' onclick='return fn_cliente_mas_compra_ruta(event)' href='#'>Generar Reporte</a>"
+    });    
+    $("#sel_rutas").load("../../procesos/rutas_combos.php",function(){
+        $("#sel_rutas").append("<option value=''>Todas</option>");
+    });   
+    $( "#inicio" ).datepicker({     
+        changeMonth: true,
+        dateFormat: 'yy-mm-dd',
+        changeYear: true,   
+        showButtonPanel: true,
+        showOtherMonths: true,
+        selectOtherMonths: true,   
+        numberOfMonths: 2,
+        onClose: function( selectedDate ) {
+            $( "#fin" ).datepicker( "option", "minDate", selectedDate );
+        }
+    });
+    $( "#fin" ).datepicker({    
+        changeMonth: true,
+        dateFormat: 'yy-mm-dd',
+        changeYear: true,   
+        showButtonPanel: true,
+        showOtherMonths: true,
+        selectOtherMonths: true,   
+        numberOfMonths: 2,
+        onClose: function( selectedDate ) {
+            $( "#inicio" ).datepicker( "option", "maxDate", selectedDate );
+        }
+    });
+
+    $('.generarReporte_clientes_rutas').button();  
+    e.preventDefault();  
+}
+
+function fn_cliente_mas_compra_ruta(e){   
+    if($("#inicio").val() == '' || $("#fin").val() == ''){
+        alert("Indique un rango de fechas")
+    }else{
+        window.open('../../reportes/cliente_mas_compra_ruta.php?inicio='+$("#inicio").val()+'&fin='+$("#fin").val()+'&id='+$("#sel_rutas").val()+'&val='+$("#sel_rutas option:selected").text(),'_blank'); 
+        modal.close();      
+    } 
+    
+}
+//////////------------/////producto_sector
+function producto_sector(e){    
+    modal.open({        
+        content: "<label>Sector</label><select id='sel_sector' style='width:150px;float:right'></select><br><label style='padding:6px;'>Fecha Inicio</label> <input type='text' id='inicio' style='padding:2px;'><br><label style='padding:6px;'>Fecha Fin</label> <input type='text' id='fin' style='float: right;padding:2px;'><br><input type='radio' name='group1' id='pdf' value='Reporte Pdf' checked> <label for='pdf'>Reporte Pdf</label> <br><a 'id='generar' style='cursor:pointer;font-size:12px;margin-left:40px' class='generarReporte_producto_sector' onclick='return fn_producto_sector(event)' href='#'>Generar Reporte</a>"
+    });    
+    $("#sel_sector").load("../../procesos/sector_combos.php",function(){
+        $("#sel_sector").append("<option value=''>Todas</option>");
+    });   
+    $( "#inicio" ).datepicker({     
+        changeMonth: true,
+        dateFormat: 'yy-mm-dd',
+        changeYear: true,   
+        showButtonPanel: true,
+        showOtherMonths: true,
+        selectOtherMonths: true,   
+        numberOfMonths: 2,
+        onClose: function( selectedDate ) {
+            $( "#fin" ).datepicker( "option", "minDate", selectedDate );
+        }
+    });
+    $( "#fin" ).datepicker({    
+        changeMonth: true,
+        dateFormat: 'yy-mm-dd',
+        changeYear: true,   
+        showButtonPanel: true,
+        showOtherMonths: true,
+        selectOtherMonths: true,   
+        numberOfMonths: 2,
+        onClose: function( selectedDate ) {
+            $( "#inicio" ).datepicker( "option", "maxDate", selectedDate );
+        }
+    });
+
+    $('.generarReporte_producto_sector').button();  
+    e.preventDefault(); 
+}
+
+function fn_producto_sector(e){    
+    if($("#inicio").val() == '' || $("#fin").val() == ''){
+        alert("Indique un rango de fechas")
+    }else{
+        window.open('../../reportes/producto_sector.php?id='+$("#sel_sector").val()+'&val='+$("#sel_sector option:selected").text()+'&inicio='+$("#inicio").val()+'&fin='+$("#fin").val(),'_blank');         
+        modal.close();  
+    }
+}
+////////---------/////
+function producto_ruta(e){    
+    modal.open({        
+        content: "<label>Ruta</label><select id='sel_rutas' style='width:150px;float:right'></select><br><label style='padding:6px;'>Fecha Inicio</label> <input type='text' id='inicio' style='padding:2px;'><br><label style='padding:6px;'>Fecha Fin</label> <input type='text' id='fin' style='float: right;padding:2px;'><br><input type='radio' name='group1' id='pdf' value='Reporte Pdf' checked> <label for='pdf'>Reporte Pdf</label> <br><a 'id='generar' style='cursor:pointer;font-size:12px;margin-left:40px' class='generarReporte_producto_ruta' onclick='return fn_producto_ruta(event)' href='#'>Generar Reporte</a>"
+    });    
+    $("#sel_rutas").load("../../procesos/rutas_combos.php",function(){
+        $("#sel_rutas").append("<option value=''>Todas</option>");
+    });   
+    $( "#inicio" ).datepicker({     
+        changeMonth: true,
+        dateFormat: 'yy-mm-dd',
+        changeYear: true,   
+        showButtonPanel: true,
+        showOtherMonths: true,
+        selectOtherMonths: true,   
+        numberOfMonths: 2,
+        onClose: function( selectedDate ) {
+            $( "#fin" ).datepicker( "option", "minDate", selectedDate );
+        }
+    });
+    $( "#fin" ).datepicker({    
+        changeMonth: true,
+        dateFormat: 'yy-mm-dd',
+        changeYear: true,   
+        showButtonPanel: true,
+        showOtherMonths: true,
+        selectOtherMonths: true,   
+        numberOfMonths: 2,
+        onClose: function( selectedDate ) {
+            $( "#inicio" ).datepicker( "option", "maxDate", selectedDate );
+        }
+    });
+
+    $('.generarReporte_producto_ruta').button();  
+    e.preventDefault(); 
+}
+
+function fn_producto_ruta(e){    
+    if($("#inicio").val() == '' || $("#fin").val() == ''){
+        alert("Indique un rango de fechas")
+    }else{
+        window.open('../../reportes/producto_ruta.php?id='+$("#sel_rutas").val()+'&val='+$("#sel_rutas option:selected").text()+'&inicio='+$("#inicio").val()+'&fin='+$("#fin").val(),'_blank');         
+        modal.close();  
+    }
 }

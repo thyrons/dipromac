@@ -1157,7 +1157,7 @@ function guardar_factura() {
                                                         var val = data;
                                                         if (val == 1) {
                                                             alertify.alert("Factura Guardada correctamente", function(){
-//                                                                window.open("../../reportes/factura_venta.php?hoja=A4&id="+$("#comprobante").val(),'_blank');
+                                                                window.open("../../reportes/factura_venta1.php?hoja=A4&id="+$("#comprobante").val(),'_blank');
                                                                 location.reload();
                                                             });
                                                         }
@@ -1654,7 +1654,7 @@ function inicio() {
             success: function(data) {
                 var val = data;
                 if(val != "") {
-                    window.open("../../reportes/factura_venta.php?hoja=A4&id="+$("#comprobante").val(),'_blank');
+                    window.open("../../reportes/factura_venta1.php?hoja=A4&id="+$("#comprobante").val(),'_blank');
                 } else {
                     alertify.alert("Factura no creada!!");
                 }   
@@ -1689,7 +1689,7 @@ function inicio() {
         e.preventDefault();
     });
 
-    $("#btnImprimir").attr("disabled", true);
+    //$("#btnImprimir").attr("disabled", true);
     $("#btncargar").on("click", abrirDialogo);
     $("#btnAgregar").on("click", agregar);
     $("#btnGuardarSeries").on("click", guardar_serie);

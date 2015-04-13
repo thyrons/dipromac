@@ -12,7 +12,7 @@
             $this->widths=$w;
         }                       
         function Header(){                         
-            $this->AddFont('Amble-Regular');
+            $this->AddFont('Amble-Regular','','Amble-Regular.php');
             $this->SetFont('Amble-Regular','',10);        
             $fecha = date('Y-m-d', time());
             $this->SetX(1);

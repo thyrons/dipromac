@@ -122,6 +122,17 @@ function menu_1() {
             
             <li><a href="" target="_parent"><i class="icon-print"></i> Reportes</a>
                 <ul>
+                    <li><a href="" target="_parent">Rutas y Sectores</a>
+                        <ul>
+                            <li><a href="" id="cliente_sector">Clientes por sectores</a></li>
+                            <li><a href="" id="cliente_ruta">Clientes por rutas</a></li>                            
+                            <li><a href="" id="cliente_mas_compra">Clientes que mas compran</a></li>                            
+                            <li><a href="" id="cliente_mas_compra_sector">Clientes que mas compran por sector</a></li>                            
+                            <li><a href="" id="cliente_mas_compra_ruta">Clientes que mas compran por ruta</a></li>                            
+                            <li><a href="" id="producto_sector">Producto mas vendido por sector</a></li>                            
+                            <li><a href="" id="producto_ruta">Producto mas vendido por ruta</a></li>                            
+                        </ul>
+                   </li>
                     <li><a href="" target="_parent">Productos</a>
                         <ul>
                             <li><a href="" id="producto_general">Lista precios en general</a></li>
