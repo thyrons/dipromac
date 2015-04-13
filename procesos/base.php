@@ -8,6 +8,5 @@ function conectarse() {
     }
     return $conexion;
 }
-
 conectarse();
 ?>

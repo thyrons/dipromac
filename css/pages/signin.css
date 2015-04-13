@@ -6,25 +6,30 @@ Bootstrap Admin Template by EGrappler.com
 
 
 /** Base Body Styles **/
-body{ background: url(../../img/body-bg.png); color:#838383; font: 13px/1.7em 'Open Sans';}
+body{text-align: center;}
 
 
 .account-container {
 	width: 380px; 
 	display: block;
 	margin: 60px auto 0 auto;
-	
-	background: #f9f9f9;
-	
-	border: 1px solid #d5d5d5;
-	
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-
+	background: #3399FF;
 	box-shadow:  0px 0px 2px #dadada, inset 0px -3px 0px #e6e6e6;
+	border-bottom-right-radius: 20em;
+	border-bottom-left-radius: 20em;
+	height: 470px;
 }
-
+.btn-su{
+	background: #222222;
+	border-radius: 0px!important;
+	border-right: 2px;
+	border-left: 3px;
+	color: #FFFFFF;
+}
+.btn-su:hover{
+	background: #FFFFFF!important;
+	color: #222222;
+}
 .content {
 	padding: 16px 28px 23px;
 } 
@@ -43,7 +48,7 @@ body{ background: url(../../img/body-bg.png); color:#838383; font: 13px/1.7em 'O
 
 .login-fields input {
 	font-family: 'Open Sans';
-	font-size: 13px;
+	font-size: 15px;
 	color: #8e8d8d;
 	padding: 11px 15px 10px 50px;
 	background-color: #fdfdfd;
@@ -179,7 +184,11 @@ span.login-checkbox > input[type='checkbox']:checked + label {
 	text-decoration: none;
 }
 
-.button {-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; display: inline-block; float: right; margin-top: 18px;}
+.button {
+   display: inline-block;
+    float: right;
+     margin-top: 18px;
+ }
 
 
 

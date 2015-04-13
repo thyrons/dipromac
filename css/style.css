@@ -87,6 +87,7 @@ textarea {
 
 .navbar-fixed-top {
     position: static;
+    display: none;
 }
 
 .navbar .nav a {

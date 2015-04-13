@@ -31,11 +31,7 @@ session_destroy();
         <script type="text/javascript" src="../js/alertify.min.js"></script>
     </head>
 
-    <body style="background: url(../images/fondo.fw.png)no-repeat fixed center;
-          -webkit-background-size: cover;
-          -moz-background-size: cover;
-          -o-background-size: cover;
-          background-size: cover;">
+    <body>
         <div class="account-container">
             <div class="content clearfix">
                 <form action="" method="post" name="form_admin">
@@ -54,15 +50,11 @@ session_destroy();
                     </div>
 
                     <div class="login-actions">
-                        <span class="login-checkbox">
-                            <input id="Field" name="Field" type="checkbox" class="field login-checkbox" value="First Choice" tabindex="4" />
-                            <label class="choice" for="Field">Recordar conexión</label>
-                        </span>
-
-                        <button class="button btn btn-success btn-large" id="btnIngreso" >Ingresar</button>
-                        <button class="button btn btn-success btn-large" id="btnRetornar">Retornar</button>
+                        <button class="button btn btn-su" id="btnIngreso" >Ingresar</button>
+                        <button class="button btn btn-su" id="btnRetornar">Retornar</button>
                     </div>
                 </form>
+                <img src="../images/logo_empresa2.fw.png" width="85%">
             </div>
         </div> 
     </body>
