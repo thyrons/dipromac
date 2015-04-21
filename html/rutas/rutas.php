@@ -7,7 +7,7 @@ $cont = 0;
 $repe = 0;
 
     //////////////////validar repetidos//////////////////
-    $consulta = pg_query("select * from rutas where nombre_ruta='" . strtoupper($_POST['nombre_ruta']) . "'");
+    $consulta = pg_query("select * from rutas where nombre_ruta='" . strtoupper($_POST['nombre_ruta']) . "' and id_sector = '".$_POST['nombre_sector']."'");
     while ($row = pg_fetch_row($consulta)) {
         $repe++;        
     }

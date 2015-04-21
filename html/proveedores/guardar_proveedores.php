@@ -12,7 +12,8 @@ while ($row = pg_fetch_row($consulta)) {
 }
 $cont++;
 
-pg_query("insert into proveedores values('$cont','$_POST[tipo_docu]','$_POST[ruc_ci]','".strtoupper($_POST[empresa_pro])."','".strtoupper($_POST[representante_legal])."','".strtoupper($_POST[visitador])."','$_POST[direccion_pro]','$_POST[nro_telefono]','$_POST[nro_celular]','$_POST[fax]','".strtoupper($_POST[pais_pro])."','".strtoupper($_POST[ciudad_pro])."','$_POST[forma_pago]','$_POST[correo]','$_POST[principal_pro]','$_POST[observaciones_pro]','Activo','$_POST[id_plan_cuentas]')");
+
+pg_query("insert into proveedores values('$cont','$_POST[tipo_docu]','$_POST[ruc_ci]','".strtoupper($_POST['empresa_pro'])."','".strtoupper($_POST['representante_legal'])."','".strtoupper($_POST['visitador'])."','$_POST[direccion_pro]','$_POST[nro_telefono]','$_POST[nro_celular]','$_POST[fax]','".strtoupper($_POST['pais_pro'])."','".strtoupper($_POST['ciudad_pro'])."','$_POST[forma_pago]','$_POST[correo]','$_POST[principal_pro]','$_POST[observaciones_pro]','Activo','1')");
 $data = 1;
 echo $data;
 ?>

@@ -288,7 +288,7 @@
                                                         <div class="controls">
                                                             <div class="input-append">
                                                                 <select id="bodegas" name="bodegas" class="span4">
-                                                                    <option value="">........Seleccione........</option>
+                                                                    <!--<option value="">........Seleccione........</option>-->
                                                                     <?php
                                                                     $consulta = pg_query("select * from bodegas ");
                                                                     while ($row = pg_fetch_row($consulta)) {

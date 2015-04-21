@@ -521,7 +521,7 @@ function inicio() {
     $("#cod_prod").keyup(function() {
         $.ajax({
             type: "POST",
-            url: "../procesos/comparar_codigo.php",
+            url: "comparar_codigo.php",
             data: "codigo=" + $("#cod_prod").val(),
             success: function(data) {
                 var val = data;
