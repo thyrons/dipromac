@@ -18,13 +18,6 @@ function scrollToTop() {
     }, 'slow');
 }
 
-$(function() {
-    $('#main-menu').smartmenus({
-        subMenusSubOffsetX: 1,
-        subMenusSubOffsetY: -8
-    });
-});
-
 var dialogo =
 {
     autoOpen: false,
@@ -101,14 +94,14 @@ function guardar_proveedor() {
                         $("#direccion_pro").focus();
                         alertify.error("Indique la dirección");
                     } else {
-                        if ($("#nro_telefono").val() === "") {
-                            $("#nro_telefono").focus();
-                            alertify.error("Indique número telefónico");
-                        } else {
-                            if (!expr.test(correo) || $("#correo").val() === "") {
-                                $("#correo").focus();
-                                alertify.error("Ingrese un correo");
-                            }else{
+                        // if ($("#nro_telefono").val() === "") {
+                        //     $("#nro_telefono").focus();
+                        //     alertify.error("Indique número telefónico");
+                        // } else {
+                        //     if (!expr.test(correo) || $("#correo").val() === "") {
+                        //         $("#correo").focus();
+                        //         alertify.error("Ingrese un correo");
+                        //     }else{
                                 if ($("#pais_pro").val() === "") {
                                     $("#pais_pro").focus();
                                     alertify.error("Ingrese el país");
@@ -130,7 +123,15 @@ function guardar_proveedor() {
                                                     url: "guardar_proveedores.php",
                                                     data: "tipo_docu=" + $("#tipo_docu").val() + "&ruc_ci=" + $("#ruc_ci").val() +
                                                     "&empresa_pro=" + $("#empresa_pro").val() + "&representante_legal=" + $("#representante_legal").val()
-                                                    + "&visitador=" + $("#visitador").val() + "&direccion_pro=" + $("#direccion_pro").val() + "&nro_telefono=" + $("#nro_telefono").val() + "&nro_celular=" + $("#nro_celular").val() + "&fax=" + $("#fax").val() + "&pais_pro=" + $("#pais_pro").val() + "&ciudad_pro=" + $("#ciudad_pro").val() + "&forma_pago=" + $("#forma_pago").val() + "&correo=" + $("#correo").val() + "&principal_pro=" + $("#principal_pro").val() + "&observaciones_pro=" + $("#observaciones_pro").val()+ "&id_plan_cuentas=" + $("#id_plan_cuentas").val(),
+                                                    + "&visitador=" + $("#visitador").val() + "&direccion_pro=" + $("#direccion_pro").val() + "&nro_telefono=" 
+                                                    + $("#nro_telefono").val() + "&nro_celular=" + $("#nro_celular").val() 
+                                                    + "&fax=" + $("#fax").val() + "&pais_pro=" + $("#pais_pro").val() 
+                                                    + "&ciudad_pro=" + $("#ciudad_pro").val() + "&forma_pago=" 
+                                                    + $("#forma_pago").val() + "&correo=" + $("#correo").val() 
+                                                    + "&principal_pro=" + $("#principal_pro").val() + "&observaciones_pro=" 
+                                                    + $("#observaciones_pro").val()+ "&id_plan_cuentas=" 
+                                                    + $("#id_plan_cuentas").val()+ "&cupo_credito=" 
+                                                    + $("#cupo_credito").val()+ "&tipo_pro=" + $("#tipo_pro").val(),
                                                     success: function(data) {
                                                         var val = data;
                                                         if (val == 1) {
@@ -143,8 +144,8 @@ function guardar_proveedor() {
                                                 }); 
                                             }
                                         }
-                                    }
-                                }
+                                    // }
+                                // }
                             }
                         }
                     }
@@ -182,14 +183,14 @@ function modificar_proveedor() {
                             $("#direccion_pro").focus();
                             alertify.error("Indique la dirección");
                         } else {
-                            if ($("#nro_telefono").val() === "") {
-                                $("#nro_telefono").focus();
-                                alertify.error("Indique número telefónico");
-                            } else {
-                                if (!expr.test(correo) || $("#correo").val() === "") {
-                                    $("#correo").focus();
-                                    alertify.error("Ingrese un correo");
-                                } else {
+                            // if ($("#nro_telefono").val() === "") {
+                            //     $("#nro_telefono").focus();
+                            //     alertify.error("Indique número telefónico");
+                            // } else {
+                                // if (!expr.test(correo) || $("#correo").val() === "") {
+                                //     $("#correo").focus();
+                                //     alertify.error("Ingrese un correo");
+                                // } else {
                                     if ($("#pais_pro").val() === "") {
                                         $("#pais_pro").focus();
                                         alertify.error("Ingrese el pais");
@@ -211,7 +212,15 @@ function modificar_proveedor() {
                                                         url: "modificar_proveedores.php",
                                                         data: "tipo_docu=" + $("#tipo_docu").val() + "&ruc_ci=" + $("#ruc_ci").val() + "&id_proveedor=" + $("#id_proveedor").val() +
                                                         "&empresa_pro=" + $("#empresa_pro").val() + "&representante_legal=" + $("#representante_legal").val()
-                                                        + "&visitador=" + $("#visitador").val() + "&direccion_pro=" + $("#direccion_pro").val() + "&nro_telefono=" + $("#nro_telefono").val() + "&nro_celular=" + $("#nro_celular").val() + "&fax=" + $("#fax").val() + "&pais_pro=" + $("#pais_pro").val() + "&ciudad_pro=" + $("#ciudad_pro").val() + "&forma_pago=" + $("#forma_pago").val() + "&correo=" + $("#correo").val() + "&principal_pro=" + $("#principal_pro").val() + "&observaciones_pro=" + $("#observaciones_pro").val(),
+                                                        + "&visitador=" + $("#visitador").val() + "&direccion_pro=" + $("#direccion_pro").val() + "&nro_telefono=" + $("#nro_telefono").val() 
+                                                        + "&nro_celular=" + $("#nro_celular").val() + "&fax=" + $("#fax").val() 
+                                                        + "&pais_pro=" + $("#pais_pro").val() + "&ciudad_pro=" 
+                                                        + $("#ciudad_pro").val() + "&forma_pago=" + $("#forma_pago").val() 
+                                                        + "&correo=" + $("#correo").val() + "&principal_pro=" 
+                                                        + $("#principal_pro").val() + "&observaciones_pro=" 
+                                                        + $("#observaciones_pro").val()+ "&id_plan_cuentas=" 
+                                                        + $("#id_plan_cuentas").val()+ "&cupo_credito=" + $("#cupo_credito").val()
+                                                        + "&tipo_pro=" + $("#tipo_pro").val(),
                                                         success: function(data) {
                                                             var val = data;
                                                             if (val == 1) {
@@ -224,8 +233,8 @@ function modificar_proveedor() {
                                                     });
                                                 }
                                             }
-                                        }
-                                    }
+                                        // }
+                                    // }
                                 }
                             }
                         }
@@ -333,7 +342,27 @@ function reset () {
     });
 }
 
+function punto(e){
+    var key;
+    if (window.event) {
+        key = e.keyCode;
+    }
+    else if (e.which) {
+        key = e.which;
+    }
+
+    if (key < 48 || key > 57) {
+        if (key === 46 || key === 8)     {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    return true;   
+}
+
 function inicio() {
+    // $("[data-mask]").inputmask();
     alertify.set({ delay: 1000 });    
     $("#ruc_ci").focus();
     $("#ruc_ci").attr("maxlength", "10");
@@ -364,9 +393,8 @@ function inicio() {
             }
         }
     });    
-    $("#ruc_ci").validarCedulaEC({
-        strict: false
-    });
+
+    $("#cupo_credito").on("keypress",punto);
     
     $("#ruc_ci").keyup(function() {
         $.ajax({
@@ -562,7 +590,7 @@ function inicio() {
     jQuery("#list").jqGrid({
         url: 'datos_proveedores.php',
         datatype: 'xml',
-        colNames: ['Codigo', 'Tipo Documento', 'Identificación', 'Empresa', 'Representante', 'Visitador', 'Dirección', 'Teléfono', 'Movil', 'Correo', 'Fax', 'País', 'Ciudad', 'Forma Pago', 'Principal', 'Observacion'],
+        colNames: ['Codigo', 'Tipo Documento', 'Identificación', 'Empresa', 'Representante', 'Visitador', 'Dirección', 'Teléfono', 'Movil', 'Correo', 'Fax', 'País', 'Ciudad', 'Forma Pago', 'Principal', 'Observacion','Cupo','Tipo Proveedor'],
         colModel: [
             {name: 'id_proveedor', index: 'id_proveedor', editable: true, align: 'center', width: '120', search: false, frozen: true, editoptions: {readonly: 'readonly'}, formoptions: {elmprefix: ""}},
             {name: 'tipo_docu', index: 'tipo_docu', editable: true, align: 'center', width: '120', search: false, frozen: true, editoptions: {readonly: 'readonly'}, formoptions: {elmprefix: ""}},
@@ -579,7 +607,9 @@ function inicio() {
             {name: 'ciudad_pro', index: 'ciudad_pro', editable: true, align: 'center', width: '120', search: false, frozen: false, editoptions: {readonly: 'readonly'}, formoptions: {elmprefix: ""}},
             {name: 'forma_pago', index: 'forma_pago', editable: true, align: 'center', width: '120', search: false, frozen: false, editoptions: {readonly: 'readonly'}, formoptions: {elmprefix: ""}},
             {name: 'principal_pro', index: 'principal_pro', editable: true, align: 'center', width: '120', search: false, frozen: false, editoptions: {readonly: 'readonly'}, formoptions: {elmprefix: ""}},
-            {name: 'observaciones_pro', index: 'observaciones_pro', editable: true, align: 'center', width: '120', search: false, frozen: false, editoptions: {readonly: 'readonly'}, formoptions: {elmprefix: ""}}
+            {name: 'observaciones_pro', index: 'observaciones_pro', editable: true, align: 'center', width: '120', search: false, frozen: false, editoptions: {readonly: 'readonly'}, formoptions: {elmprefix: ""}},
+            {name: 'cupo_credito', index: 'cupo_credito', editable: true, align: 'center', width: '120', search: false, frozen: false, editoptions: {readonly: 'readonly'}, formoptions: {elmprefix: ""}},
+            {name: 'tipo_pro', index: 'tipo_pro', editable: true, align: 'center', width: '120', search: false, frozen: false, editoptions: {readonly: 'readonly'}, formoptions: {elmprefix: ""}}
         ],
         rowNum: 10,
         width: 830,

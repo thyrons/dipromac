@@ -151,6 +151,16 @@
                                                             </select>
                                                         </div>  
                                                     </div> 
+
+                                                    <div class="control-group">                                         
+                                                        <label class="control-label" for="principal_pro">Proveedor Principal: <font color="red">*</font></label>
+                                                        <div class="controls">
+                                                            <select name="principal_pro" id="principal_pro" required class="span4">
+                                                                <option value="Si" selected>Si</option>
+                                                                <option value="No">No</option>
+                                                            </select>
+                                                        </div>          
+                                                    </div>
                                                     
                                                     <div class="control-group">
                                                         <label class="control-label" for="observaciones_pro">Comentario:</label>
@@ -204,20 +214,17 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="control-group">											
-                                                        <label class="control-label" for="principal_pro">Proveedor Principal: <font color="red">*</font></label>
+                                                    <div class="control-group">                                           
+                                                        <label class="control-label" for="cupo_credito">Cupo de Crédito:</label>
                                                         <div class="controls">
-                                                            <select name="principal_pro" id="principal_pro" required class="span4">
-                                                                <option value="Si" selected>Si</option>
-                                                                <option value="No">No</option>
-                                                            </select>
-                                                        </div>			
-                                                    </div>
+                                                             <input type="text" name="cupo_credito" id="cupo_credito" class="span4" value="0.00" />
+                                                        </div>
+                                                  </div>
 
                                                     <div class="control-group">                                         
-                                                        <label class="control-label" for="principal_pro">Tipo: <font color="red">*</font></label>
+                                                        <label class="control-label" for="tipo_pro">Tipo: <font color="red">*</font></label>
                                                         <div class="controls">
-                                                            <select name="principal_pro" id="principal_pro" required class="span4">
+                                                            <select name="tipo_pro" id="tipo_pro" required class="span4">
                                                                 <option value="N" selected>Persona Natural</option>
                                                                 <option value="J">Persona Jurídica</option>
                                                             </select>
@@ -228,14 +235,7 @@
 
                                                 <div class="tab-pane" id="jscontrols">
                                                 <div class="span6">
-                                                 <div class="control-group">                                           
-                                                        <label class="control-label" for="cupo_credito">Cupo de Crédito:</label>
-                                                        <div class="controls">
-                                                             <input type="text" name="cupo_credito" id="cupo_credito" class="span3" value="0.00" />
-                                                        </div>
-                                                  </div>
-                                                  <hr>
-
+                                                 
                                                  <div class="control-group">                                            
                                                     <label class="control-label">Se aplica impto a las compras.</label>
                                                     <div class="controls">
