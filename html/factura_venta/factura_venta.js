@@ -227,10 +227,10 @@ function entrar3() {
                         $("#p_venta").focus();
                         alertify.error("Ingrese un precio");
                     } else {
-                        if (parseInt($("#cantidad").val()) > parseInt($("#disponibles").val())) {
-                            $("#cantidad").focus();
-                            alertify.error("Error.. La cantidad ingresada es mayor a la disponible");
-                        }else {
+                        // if (parseInt($("#cantidad").val()) > parseInt($("#disponibles").val())) {
+                        //     $("#cantidad").focus();
+                        //     alertify.error("Error.. La cantidad ingresada es mayor a la disponible");
+                        // }else {
                             var filas = jQuery("#list").jqGrid("getRowData");
                             var descuento = 0;
                             var total = 0;
@@ -289,17 +289,31 @@ function entrar3() {
                                     }
                                 }
                                 if (repe === 1) {
-                                    suma = parseInt(can) + parseInt($("#cantidad").val());
-                                    if(suma > parseInt($("#disponibles").val())){
-                                        $("#cantidad").focus();
-                                        alertify.error("Error.. La cantidad ingresada es mayor a la disponible");  
-                                    }else{
+                                    // suma = parseInt(can) + parseInt($("#cantidad").val());
+                                    // if(suma > parseInt($("#disponibles").val())){
+                                    //     $("#cantidad").focus();
+                                    //     alertify.error("Error.. La cantidad ingresada es mayor a la disponible");  
+                                    // }else{
+                                        // if ($("#descuento").val() !== "") {
+                                        //     desc = $("#descuento").val();
+                                        //     precio = (parseFloat($("#p_venta").val())).toFixed(2);
+                                        //     multi = (parseFloat(suma) * parseFloat($("#p_venta").val())).toFixed(2);
+                                        //     descuento = ((multi * parseFloat($("#descuento").val())) / 100);
+                                        //     flotante = parseFloat(descuento) ;
+                                        //     resultado = (Math.round(flotante * Math.pow(10,2)) / Math.pow(10,2)).toFixed(2);
+                                        //     total = (multi - resultado).toFixed(2);
+                                        // } else {
+                                        //     desc = 0;
+                                        //     precio = (parseFloat($("#p_venta").val())).toFixed(2);
+                                        //     total = (parseFloat($("#cantidad").val()) * precio).toFixed(2);
+                                        // }
+
                                         if ($("#descuento").val() !== "") {
                                             desc = $("#descuento").val();
                                             precio = (parseFloat($("#p_venta").val())).toFixed(2);
-                                            multi = (parseFloat(suma) * parseFloat($("#p_venta").val())).toFixed(2);
+                                            multi = (parseFloat($("#cantidad").val()) * parseFloat($("#p_venta").val())).toFixed(2);
                                             descuento = ((multi * parseFloat($("#descuento").val())) / 100);
-                                            flotante = parseFloat(descuento) ;
+                                            flotante = parseFloat(descuento);
                                             resultado = (Math.round(flotante * Math.pow(10,2)) / Math.pow(10,2)).toFixed(2);
                                             total = (multi - resultado).toFixed(2);
                                         } else {
@@ -312,7 +326,7 @@ function entrar3() {
                                             cod_producto: $("#cod_producto").val(), 
                                             codigo: $("#codigo").val(), 
                                             detalle: $("#producto").val(), 
-                                            cantidad: suma, 
+                                            cantidad: $("#cantidad").val(), 
                                             precio_u: precio, 
                                             descuento: desc, 
                                             cal_des: resultado,
@@ -331,7 +345,7 @@ function entrar3() {
                                         $("#descuento").val("");
                                         $("#disponibles").val("");
                                         $('#combobox').children().remove().end();
-                                    }
+                                    // }
                                 }
                                 else {
                                     if(filas.length < 25){
@@ -407,8 +421,8 @@ function entrar3() {
                                         if (dd['iva'] === "No") {
                                             subtotal = (parseFloat(subtotal) + parseFloat(dd['total']));
                                             sub = parseFloat(subtotal).toFixed(2);
-                                            descu_total = (parseFloat($("#desc").val()) + parseFloat(dd['cal_des'])).toFixed(2);
-                                            t_fc = ((parseFloat(sub)) + parseFloat($("#tot").val())).toFixed(2);
+                                            descu_total = (parseFloat(descu_total) + parseFloat(dd['cal_des'])).toFixed(2);
+                                            t_fc = ((parseFloat(sub)) + parseFloat($("#total_p2").val()) + parseFloat($("#iva").val())).toFixed(2);
                                             $("#iva_producto").val("");
                                         }
                                     }
@@ -418,7 +432,7 @@ function entrar3() {
                                 }
                             }
                             $("#codigo_barras").focus();
-                        }
+                        // }
                     }
                 }
             }

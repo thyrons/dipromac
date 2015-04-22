@@ -734,7 +734,7 @@ function inicio() {
          var id = jQuery("#list").jqGrid('getGridParam', 'selrow');
          jQuery('#list').jqGrid('restoreRow', id);   
          var ret = jQuery("#list").jqGrid('getRowData', id);
-         $("#foto").attr("src", "../fotos_productos/"+ ret.imagen);
+         $("#foto").attr("src", "fotos_productos/"+ ret.imagen);
          jQuery("#list").jqGrid('GridToForm', id, "#productos_form");
          $("#btnGuardar").attr("disabled", true);
          document.getElementById("cod_prod").readOnly = true;

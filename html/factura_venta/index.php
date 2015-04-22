@@ -100,41 +100,46 @@
 
                                 <div class="widget-content">
                                     <div class="tabbable">
-
                                         <div class="widget-content">
                                             <div class="widget big-stats-container">
                                                 <form id="formularios_fac" name="formularios_fac" method="post" class="form-horizontal">
-                                                    <fieldset>
-                                                     <div class="row">
-                                                      <div class="span3">
-                                                         <div class="control-group">                                            
-                                                            <label class="control-label" for="nombres_cli">Fecha Actual:</label>
+                                                   <fieldset>
+                                                        <section class="columna_1">
+                                                            <div class="control-group">                                         
+                                                                <label class="control-label" for="comprobante">Comprobante:</label>
                                                                 <div class="controls">
-                                                                    <input type="text" name="fecha_actual"  id="fecha_actual" class="span2" readonly/>
-                                                                    <input type="hidden" name="comprobante" id="comprobante" class="campo" readonly style="width: 80px" value="<?php echo $cont1 ?>" />
+                                                                    <input type="text" name="comprobante" id="comprobante" readonly class="campo" value="<?php echo $cont1 ?>" style="width: 80px"/>
                                                                 </div>
-                                                          </div>
-                                                       </div> 
+                                                            </div>
+                                                        </section>
 
-                                                      <div class="span3">
-                                                          <div class="control-group">                                            
-                                                            <label class="control-label" for="nombres_cli">Hora Actual:</label>
+                                                        <section class="columna_2">
+                                                            <div class="control-group">                                         
+                                                                <label class="control-label" for="fecha_actual">Fecha Actual:</label>
                                                                 <div class="controls">
-                                                                    <input type="text" name="hora_actual"  id="hora_actual" class="span2" readonly />
+                                                                    <input type="text" name="fecha_actual" id="fecha_actual" readonly value="" class="campo" style="width: 100px" />
                                                                 </div>
-                                                          </div>
-                                                      </div>
+                                                            </div>
+                                                        </section>
 
-                                                      <div class="span3">
-                                                         <div class="control-group">                                            
-                                                            <label class="control-label" for="nombres_cli">Responsable:</label>
+                                                        <section class="columna_3">
+                                                            <div class="control-group">                                         
+                                                                <label class="control-label" for="hora_actual">Hora Actual:</label>
                                                                 <div class="controls">
-                                                                    <input type="text" name="digitador" id="digitador" value="<?php echo $_SESSION['nombres'] ?>" class="span3" readonly/>
-                                                                    <input type="hidden" name="comprobante2" id="comprobante2" value="<?php echo $cont1 ?>" />
+                                                                    <input type="text" name="hora_actual" id="hora_actual" readonly class="campo" style="width: 100px"/>
                                                                 </div>
-                                                          </div>
-                                                      </div>  
-                                                     </div>
+                                                            </div>
+                                                        </section>
+
+                                                        <section class="columna_4">
+                                                            <div class="control-group">                                         
+                                                                <label class="control-label" for="digitador"> Digitad@r:</label>
+                                                                <div class="controls">
+                                                                    <input type="text" name="digitador" id="digitador" value="<?php echo $_SESSION['nombres'] ?>" class="campo" style="width: 200px" readonly/>
+                                                                    <input type="hidden" name="comprobante2" id="comprobante2" class="campo" style="width: 100px" value="<?php echo $cont1 ?>" />
+                                                                </div>
+                                                            </div>
+                                                        </section>
                                                     </fieldset>
                                                     <hr>
                                                     <ul class="nav nav-tabs">

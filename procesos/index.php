@@ -21,7 +21,7 @@ while ($row = pg_fetch_row($consulta)) {
         $_SESSION['slogan'] = $row[11];
         $_SESSION['propietario'] = $row[12];
         $_SESSION['direccion'] = $row[3];
-        $_SESSION['telefono'] = "";
+        $_SESSION['telefono'] = $row[4];
         $_SESSION['celular'] = $row[5];
         $_SESSION['pais_ciudad'] = $row[6] . " - ".  $row[7];
     }

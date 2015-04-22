@@ -165,7 +165,18 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="control-group" >
+                                                    <div class="control-group">                                           
+                                                        <label class="control-label" for="iva">Iva: <font color="red">*</font></label>
+                                                        <div class="controls">
+                                                            <select id="iva" name="iva" class="span4">
+                                                                <option value="">......Seleccione......</option>
+                                                                <option value="Si" selected>Si</option> 
+                                                                <option value="No">No</option> 
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="control-group" style="display: none">
                                                         <label class="control-label" for="vendible">Vendible:</label>
                                                         <div class="controls">
                                                             <select name="vendible" id="vendible" class="span4" >
@@ -199,16 +210,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="control-group" style="display: none">											
-                                                        <label class="control-label" for="iva">Iva: <font color="red">*</font></label>
-                                                        <div class="controls">
-                                                            <select id="iva" name="iva" class="span4">
-                                                                <option value="">......Seleccione......</option>
-                                                                <option value="Si" selected>Si</option> 
-                                                                <option value="No">No</option> 
-                                                            </select>
-                                                        </div>
-                                                    </div>
+                                                    
 
                                                     <div class="control-group" style="display: none">											
                                                         <label class="control-label" for="series">Series: </label>
@@ -290,7 +292,7 @@
                                                                 <select id="bodegas" name="bodegas" class="span4">
                                                                     <!--<option value="">........Seleccione........</option>-->
                                                                     <?php
-                                                                    $consulta = pg_query("select * from bodegas ");
+                                                                    $consulta = pg_query("select * from bodegas order by id_bodega asc");
                                                                     while ($row = pg_fetch_row($consulta)) {
                                                                         echo "<option id=$row[0] value=$row[0]>$row[1]</option>";
                                                                     }
