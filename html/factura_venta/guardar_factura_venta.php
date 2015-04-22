@@ -52,12 +52,13 @@ if ($_POST['id_cliente'] === "") {
         //
         ////////////guardar factura venta////////
         pg_query("insert into factura_venta values('$cont1','1','$contt','$_SESSION[id]','$_POST[comprobante]','$_POST[num_factura]','$_POST[fecha_actual]','$_POST[hora_actual]','$_POST[cancelacion]','$_POST[tipo_precio]','$_POST[formas]','$_POST[autorizacion]','$_POST[fecha_auto]','$_POST[fecha_caducidad]','$_POST[tarifa0]','$_POST[tarifa12]','$_POST[iva]','$_POST[desc]','$_POST[tot]','Activo','')");
-        pg_query("insert into cliente_sector values ('".$contsec."','".$contt."','1')");
+        
         ////////////////////////////////////////
     } else {
         if (strlen($tipo) == 13) {
             //////////////////guardar clientes/////////////    
             pg_query("insert into clientes values('$contt','Ruc','$_POST[ruc_ci]','" . strtoupper($_POST['nombre_cliente']) . "','N','$_POST[direccion_cliente]','$_POST[telefono_cliente]','','','','$_POST[correo]','','','Activo','1')");
+            pg_query("insert into cliente_sector values ('".$contsec."','".$contt."','1')");
             ////////////////////////////////////////////
             //
             ////////////guardar factura venta////////
